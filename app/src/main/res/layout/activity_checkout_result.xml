@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="32dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/checkout_success" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/futura_bold"
+            android:text="Pesananmu berhasil dibuat !"
+            android:textColor="@color/black"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/futura_medium"
+            android:gravity="center_horizontal"
+            android:text="Segera lakukan pembayaran agar pesananmu dapat diproses."
+            android:textColor="@color/darkGray"
+            android:textSize="14dp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/border_round_yellow"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/futura_medium"
+                android:text="Total Tagihan"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/label"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/futura_bold"
+                android:text="Rp. 0"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/price"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/futura_light_bt"
+                android:text="Bayarlah sesuai dengan nominal tagihan untuk mempercepat proses verifikasi. Jika melakukan pembayaran menggunakan transfer bank, mohon untuk simpan bukti transfer."
+                android:textColor="@color/mediumBlack"
+                android:textSize="12dp" />
+
+            <com.mikepenz.iconics.view.IconicsImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignParentRight="true"
+                app:iiv_color="@color/mediumBlack"
+                app:iiv_icon="gmd-info" />
+        </RelativeLayout>
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/btnChat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            app:fb_defaultColor="@color/colorPrimary"
+            app:fb_focusColor="@color/colorPrimaryDark"
+            app:fb_radius="10dp"
+            app:fb_text="Chat Admin via Whatsapp"
+            app:fb_textColor="@color/white"
+            app:fb_textFont="@font/futura_medium"
+            app:fb_textFontRes="@font/futura_medium"
+            app:fb_textGravity="center"
+            app:fb_textSize="14dp" />
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/btnDashboard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            app:fb_borderColor="@color/colorPrimary"
+            app:fb_borderWidth="1dp"
+            app:fb_defaultColor="@color/white"
+            app:fb_focusColor="@color/colorAccent"
+            app:fb_radius="10dp"
+            app:fb_text="Kembali ke Halaman Utama"
+            app:fb_textColor="@color/colorPrimary"
+            app:fb_textFont="@font/futura_medium"
+            app:fb_textFontRes="@font/futura_medium"
+            app:fb_textGravity="center"
+            app:fb_textSize="14dp" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

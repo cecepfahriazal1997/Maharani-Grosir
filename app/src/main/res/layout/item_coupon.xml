@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/contentProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:foreground="?attr/selectableItemBackground"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="1dp"
+        app:cardPreventCornerOverlap="false"
+        app:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:background="@color/colorPrimary">
+
+                <TextView
+                    android:id="@+id/amount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="16dp"
+                    android:fontFamily="@font/futura_medium"
+                    android:gravity="center"
+                    android:text="Rp. 20.000"
+                    android:textColor="@color/white"
+                    android:textSize="18dp" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/futura_medium"
+                    android:text="Voucher Diskon"
+                    android:textColor="@color/black"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/futura_medium"
+                    android:text="Berlaku hingga 20 Agustus 2020 \nMin. Belanja Rp. 50.000"
+                    android:textColor="@color/mediumBlack"
+                    android:textSize="12dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/futura_bold"
+                        android:text="S &amp; K"
+                        android:textColor="@color/blue"
+                        android:textSize="12dp"
+                        android:layout_centerVertical="true"/>
+
+                    <mehdi.sakout.fancybuttons.FancyButton
+                        android:id="@+id/btnSubmit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="0dp"
+                        android:paddingHorizontal="20dp"
+                        android:paddingTop="4dp"
+                        android:paddingBottom="4dp"
+                        app:fb_defaultColor="@color/colorPrimary"
+                        app:fb_focusColor="@color/colorPrimaryDark"
+                        app:fb_radius="8dp"
+                        app:fb_text="Gunakan"
+                        app:fb_textColor="@color/white"
+                        app:fb_textFont="@font/futura_medium"
+                        app:fb_textFontRes="@font/futura_medium"
+                        app:fb_textGravity="center"
+                        app:fb_textSize="14dp" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</LinearLayout>

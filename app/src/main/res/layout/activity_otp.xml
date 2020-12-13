@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="32dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/send_otp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/futura_medium"
+            android:text="Konfirmasi Kode OTP"
+            android:textColor="@color/black"
+            android:textSize="18dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/futura_medium"
+            android:gravity="center"
+            android:text="Kode verifikasi telah berhasil dikirim ke email"
+            android:textColor="@color/darkGray"
+            android:textSize="16dp" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:fontFamily="@font/futura_medium"
+            android:gravity="center"
+            android:text="-"
+            android:textColor="@color/colorPrimary"
+            android:textSize="16dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/futura_medium"
+            android:gravity="center"
+            android:text="Jangan beritahu siapapun kode tersebut agar akun anda tetap aman."
+            android:textColor="@color/darkGray"
+            android:textSize="16dp" />
+
+        <com.alimuzaffar.lib.pin.PinEntryEditText
+            android:id="@+id/codeOTP"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            android:cursorVisible="false"
+            android:digits="1234567890"
+            android:fontFamily="@font/futura_medium"
+            android:inputType="number"
+            android:layoutDirection="ltr"
+            android:maxLength="6"
+            android:padding="16dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/gray"
+            android:textIsSelectable="false"
+            android:textSize="28dp"
+            app:pinAnimationType="popIn" />
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            fancy:fb_defaultColor="@color/colorPrimary"
+            fancy:fb_focusColor="@color/colorPrimaryDark"
+            fancy:fb_radius="10dp"
+            fancy:fb_text="Konfirmasi"
+            fancy:fb_textColor="@color/white"
+            fancy:fb_textFont="@font/futura_medium"
+            fancy:fb_textFontRes="@font/futura_medium"
+            fancy:fb_textGravity="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/futura_medium"
+                android:text="Kode OTP tidak terkirim ? "
+                android:textColor="@color/darkGray"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/resend"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/futura_medium"
+                android:text="00:56 "
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

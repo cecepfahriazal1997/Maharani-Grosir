@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_above="@+id/contentAction">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/iconLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:src="@drawable/location"
+                    android:tint="@color/white" />
+
+                <TextView
+                    android:id="@+id/labelLocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_toRightOf="@+id/iconLocation"
+                    android:fontFamily="@font/futura_bold"
+                    android:text="Alamat Pengiriman"
+                    android:textColor="@color/white"
+                    android:textSize="16dp" />
+
+                <mehdi.sakout.fancybuttons.FancyButton
+                    android:id="@+id/btnAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="4dp"
+                    app:fb_borderColor="@color/colorPrimary"
+                    app:fb_borderWidth="1dp"
+                    app:fb_defaultColor="@color/white"
+                    app:fb_focusColor="@color/colorAccent"
+                    app:fb_radius="4dp"
+                    app:fb_text="Ubah"
+                    app:fb_textColor="@color/colorPrimary"
+                    app:fb_textFont="@font/futura_medium"
+                    app:fb_textFontRes="@font/futura_medium"
+                    app:fb_textGravity="center"
+                    app:fb_textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/labelLocation"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_toRightOf="@+id/iconLocation"
+                    android:fontFamily="@font/futura_medium"
+                    android:text="-"
+                    android:textColor="@color/white"
+                    android:textSize="14dp" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/futura_medium"
+                android:text="Daftar Pesanan"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:paddingVertical="4dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/futura_medium"
+                    android:text="Total Pesanan(5 Produk)"
+                    android:textColor="@color/black"
+                    android:textSize="14dp" />
+
+                <TextView
+                    android:id="@+id/subTotalItem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:fontFamily="@font/futura_bold"
+                    android:text="Rp. 0"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="14dp" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:fontFamily="@font/futura_medium"
+                android:text="Catatan Penjual"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/border_round_gray"
+                android:fontFamily="@font/futura_medium"
+                android:gravity="top"
+                android:hint="Masukan catatan untuk pesananmu kepada penjual"
+                android:lines="4"
+                android:padding="16dp"
+                android:textSize="14dp" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <include layout="@layout/action_checkout" />
+</RelativeLayout>

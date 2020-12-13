@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border_round_white"
+        android:padding="16dp"
+        android:id="@+id/content">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="32dp"
+            android:fontFamily="@font/futura_medium"
+            android:text="Choose"
+            android:textColor="@color/mediumBlack"
+            android:textSize="16dp" />
+
+        <com.mikepenz.iconics.view.IconicsImageView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            app:iiv_color="@color/darkGray"
+            app:iiv_icon="gmd-keyboard-arrow-right" />
+    </RelativeLayout>
+</RelativeLayout>

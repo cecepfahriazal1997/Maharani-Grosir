@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:id="@+id/content"
+    android:orientation="vertical"
+    android:paddingTop="8dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/futura_medium"
+        android:text="Satuan"
+        android:textColor="@color/black"
+        android:textSize="12dp" />
+
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/minus"
+            android:layout_width="28dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/left_border_gray"
+            android:paddingHorizontal="16dp"
+            android:src="@drawable/minus"
+            android:tint="@color/darkGray"/>
+
+        <EditText
+            android:id="@+id/value"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/fill_square_gray"
+            android:padding="8dp"
+            android:textSize="12dp"
+            android:gravity="center"
+            android:layout_weight="0.6"
+            android:inputType="number"
+            android:text="0"
+            android:maxLength="3"/>
+
+        <ImageButton
+            android:id="@+id/plus"
+            android:layout_width="28dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/right_border_primary"
+            android:padding="8dp"
+            android:src="@drawable/add"
+            android:tint="@color/white"/>
+    </LinearLayout>
+</LinearLayout>

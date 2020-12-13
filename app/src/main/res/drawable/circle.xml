@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <!-- inset - moves circle to the left-->
+        <inset android:insetLeft="-150dp">
+            <shape android:shape="ring"
+                android:thicknessRatio="7"
+                android:innerRadius="0dp"
+                android:useLevel="false"
+                >
+                <solid android:color="#ffffff"/>
+            </shape>
+        </inset>
+    </item>
+</selector>

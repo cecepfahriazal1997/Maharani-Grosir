@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/contentAction"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <RelativeLayout
+            android:id="@+id/chooseCoupon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/coupon" />
+
+            <TextView
+                android:id="@+id/labelVoucher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_toRightOf="@+id/icon"
+                android:fontFamily="@font/futura_medium"
+                android:text="Gunakan Voucher"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/currVoucher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/labelVoucher"
+                android:layout_toLeftOf="@+id/arrowVoucher"
+                android:fontFamily="@font/futura_medium"
+                android:text=""
+                android:textAlignment="textEnd"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+            <com.mikepenz.iconics.view.IconicsImageView
+                android:id="@+id/arrowVoucher"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                app:iiv_color="@color/mediumBlack"
+                app:iiv_icon="gmd-keyboard-arrow-right" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/chooseBank"
+            android:layout_marginTop="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/iconBank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/payment" />
+
+            <TextView
+                android:id="@+id/labelBank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iconBank"
+                android:fontFamily="@font/futura_medium"
+                android:text="Metode Pembayaran"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/currBank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/labelBank"
+                android:layout_toLeftOf="@+id/arrow"
+                android:fontFamily="@font/futura_medium"
+                android:text=""
+                android:textAlignment="textEnd"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+            <com.mikepenz.iconics.view.IconicsImageView
+                android:id="@+id/arrow"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                app:iiv_color="@color/mediumBlack"
+                app:iiv_icon="gmd-keyboard-arrow-right" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp">
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:fontFamily="@font/futura_medium"
+                android:paddingLeft="8dp"
+                android:text="Pilih Semua"
+                android:textColor="@color/black"
+                android:translationX="-6dp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/labelTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/futura_medium"
+                android:text="Subtotal"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+
+            <TextView
+                android:id="@+id/priceDiscount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/labelTotal"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/futura_medium"
+                android:text="Rp. 135.000"
+                android:textColor="@color/mediumBlack"
+                android:textSize="14dp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/priceDiscount"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/futura_medium"
+                android:text="Rp. 0"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/labelCoint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/price"
+                android:layout_marginTop="8dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/futura_medium"
+                android:text="Dapatkan 15 poin"
+                android:textColor="@color/gold"
+                android:textSize="14dp"
+                android:visibility="gone"/>
+        </RelativeLayout>
+
+        <mehdi.sakout.fancybuttons.FancyButton
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp"
+            app:fb_defaultColor="@color/colorPrimary"
+            app:fb_focusColor="@color/colorPrimaryDark"
+            app:fb_radius="10dp"
+            app:fb_text="Checkout"
+            app:fb_textColor="@color/white"
+            app:fb_textFont="@font/futura_medium"
+            app:fb_textFontRes="@font/futura_medium"
+            app:fb_textGravity="center"
+            app:fb_textSize="14dp" />
+    </LinearLayout>
+</LinearLayout>

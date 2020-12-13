@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightGray"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/contentToolbar"
+        layout="@layout/toolbar" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/contentToolbar"
+        android:layout_above="@+id/btnSubmit"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="8dp" />
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:layout_marginTop="32dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        app:fb_defaultColor="@color/colorPrimary"
+        app:fb_focusColor="@color/colorPrimaryDark"
+        app:fb_radius="10dp"
+        app:fb_text="Konfirmasi"
+        app:fb_textColor="@color/white"
+        app:fb_textFont="@font/futura_medium"
+        app:fb_textFontRes="@font/futura_medium"
+        app:fb_textGravity="center"
+        app:fb_textSize="14dp" />
+</RelativeLayout>

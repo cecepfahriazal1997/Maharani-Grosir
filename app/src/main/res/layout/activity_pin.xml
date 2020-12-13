@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fancy="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="32dp">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/security" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/futura_medium"
+        android:text="Membuat PIN Baru"
+        android:textColor="@color/black"
+        android:textSize="18dp" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/futura_medium"
+        android:gravity="center"
+        android:text="Silahkan membuat Nomor PIN baru untuk keamanan akun kamu."
+        android:textColor="@color/darkGray"
+        android:textSize="16dp" />
+
+    <com.alimuzaffar.lib.pin.PinEntryEditText
+        android:id="@+id/pin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="62dp"
+        android:cursorVisible="false"
+        android:digits="1234567890"
+        android:fontFamily="@font/futura_medium"
+        android:inputType="number"
+        android:layoutDirection="ltr"
+        android:maxLength="6"
+        android:padding="16dp"
+        android:textColor="@color/black"
+        android:textColorHint="@color/gray"
+        android:textIsSelectable="false"
+        android:textSize="28dp"
+        app:pinAnimationType="popIn" />
+
+    <mehdi.sakout.fancybuttons.FancyButton
+        android:id="@+id/btnSubmit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        fancy:fb_defaultColor="@color/colorPrimary"
+        fancy:fb_focusColor="@color/colorPrimaryDark"
+        fancy:fb_radius="10dp"
+        fancy:fb_text="Simpan"
+        fancy:fb_textColor="@color/white"
+        fancy:fb_textFont="@font/futura_medium"
+        fancy:fb_textFontRes="@font/futura_medium"
+        fancy:fb_textGravity="center" />
+</LinearLayout>

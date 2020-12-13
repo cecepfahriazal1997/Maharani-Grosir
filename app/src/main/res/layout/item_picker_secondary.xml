@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="4dp">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:fontFamily="@font/futura_medium"
+        android:text="Satuan"
+        android:textColor="@color/mediumBlack"
+        android:textSize="12dp" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/title"
+        android:layout_alignParentRight="true"
+        android:fontFamily="@font/futura_medium"
+        android:text="Rp. 17.000"
+        android:textColor="@color/colorPrimary"
+        android:textSize="18dp" />
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="28dp"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/minus"
+            android:layout_width="28dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/left_border_gray"
+            android:paddingHorizontal="16dp"
+            android:src="@drawable/minus"
+            android:tint="@color/darkGray" />
+
+        <EditText
+            android:id="@+id/total"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.6"
+            android:background="@drawable/fill_square_gray"
+            android:enabled="false"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:inputType="number"
+            android:maxLength="3"
+            android:padding="8dp"
+            android:text="0"
+            android:textSize="12dp" />
+
+        <ImageButton
+            android:id="@+id/plus"
+            android:layout_width="28dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/right_border_primary"
+            android:padding="8dp"
+            android:src="@drawable/add"
+            android:tint="@color/white" />
+    </LinearLayout>
+</RelativeLayout>
