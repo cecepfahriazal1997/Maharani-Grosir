@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -153,19 +154,30 @@ public class HomeFragment extends Fragment {
     }
 
     private void initSearchProduct() {
-        search.setImeActionLabel("Custom text", KeyEvent.KEYCODE_ENTER);
-        search.setOnKeyListener(new View.OnKeyListener() {
+        search.setImeActionLabel("CARI", EditorInfo.IME_ACTION_SEARCH);
+        search.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                // If the event is a key-down event on the "enter" button
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                switch (actionId) {
+                    case EditorInfo.IME_ACTION_SEARCH:
                     searchProduct(parent.apiService.searchProduct, search.getText().toString());
-                    return true;
+                    break;
                 }
                 return false;
             }
         });
+//        search.setOnKeyListener(new View.OnKeyListener() {
+//            @Override
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                // If the event is a key-down event on the "enter" button
+//                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
+//                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
+//                    searchProduct(parent.apiService.searchProduct, search.getText().toString());
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
     }
 
     private void searchProduct(String url, String keyword) {

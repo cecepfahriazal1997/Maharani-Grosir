@@ -73,15 +73,16 @@ public class CheckoutActivity extends MasterActivity implements View.OnClickList
         chooseBank.setVisibility(View.VISIBLE);
         back.setOnClickListener(this::onClick);
         buy.setOnClickListener(this::onClick);
-        chooseCoupon.setOnClickListener(this::onClick);
         chooseBank.setOnClickListener(this::onClick);
         btnAddress.setOnClickListener(this::onClick);
         typePayment = getIntent().getStringExtra("type_payment");
         if (!getIntent().getStringExtra("voucher").equals("0")) {
             idVoucher   = getIntent().getStringExtra("id_voucher");
             currVoucher.setText("Diskon " + helper.formatCurrency(getIntent().getStringExtra("voucher")));
+            chooseCoupon.setVisibility(View.VISIBLE);
         } else {
             currVoucher.setText(null);
+            chooseCoupon.setVisibility(View.GONE);
         }
         currBank.setText(getIntent().getStringExtra("payment"));
     }
@@ -231,6 +232,6 @@ public class CheckoutActivity extends MasterActivity implements View.OnClickList
     @Override
     public void onResume() {
         super.onResume();
-        address.setText(helper.getSession("address"));
+        address.setText(helper.getSession("alamat"));
     }
 }

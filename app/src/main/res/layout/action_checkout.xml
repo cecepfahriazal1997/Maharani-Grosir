@@ -23,7 +23,8 @@
         <RelativeLayout
             android:id="@+id/chooseCoupon"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:visibility="gone">
 
             <ImageView
                 android:id="@+id/icon"
@@ -50,17 +51,19 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/labelVoucher"
                 android:layout_toLeftOf="@+id/arrowVoucher"
-                android:fontFamily="@font/futura_medium"
+                android:fontFamily="@font/futura_bold"
                 android:text=""
                 android:textAlignment="textEnd"
-                android:textColor="@color/black"
-                android:textSize="14dp" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="14dp"
+                android:layout_alignParentRight="true"/>
 
             <com.mikepenz.iconics.view.IconicsImageView
                 android:id="@+id/arrowVoucher"
                 android:layout_width="18dp"
                 android:layout_height="18dp"
                 android:layout_alignParentRight="true"
+                android:visibility="gone"
                 android:layout_centerVertical="true"
                 app:iiv_color="@color/mediumBlack"
                 app:iiv_icon="gmd-keyboard-arrow-right" />
@@ -99,10 +102,10 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/labelBank"
                 android:layout_toLeftOf="@+id/arrow"
-                android:fontFamily="@font/futura_medium"
+                android:fontFamily="@font/futura_bold"
                 android:text=""
                 android:textAlignment="textEnd"
-                android:textColor="@color/black"
+                android:textColor="@color/colorPrimary"
                 android:textSize="14dp" />
 
             <com.mikepenz.iconics.view.IconicsImageView

@@ -67,7 +67,6 @@ public class CartActivity extends MasterActivity implements View.OnClickListener
         title.setText("Keranjang Saya");
         back.setOnClickListener(this::onClick);
         buy.setOnClickListener(this::onClick);
-        chooseCoupon.setOnClickListener(this::onClick);
         chooseBank.setOnClickListener(this::onClick);
         update.setOnClickListener(this::onClick);
     }
@@ -87,8 +86,10 @@ public class CartActivity extends MasterActivity implements View.OnClickListener
                                     nameVoucher     = detail.getString("potongan");
                                     if (!idVoucher.isEmpty()) {
                                         currVoucher.setText("Diskon " + helper.formatCurrency(nameVoucher));
+                                        chooseCoupon.setVisibility(View.VISIBLE);
                                     } else {
                                         currVoucher.setText(null);
+                                        chooseCoupon.setVisibility(View.GONE);
                                     }
                                     if (!detail.isNull("totalKeranjang")) {
                                         String totalAll = detail.getString("totalKeranjang");

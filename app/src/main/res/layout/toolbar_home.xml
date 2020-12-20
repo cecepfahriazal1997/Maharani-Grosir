@@ -36,6 +36,9 @@
             android:hint="Cari produk disini ..."
             android:singleLine="true"
             android:textColor="@color/black"
+            android:imeOptions="actionSearch"
+            android:imeActionLabel="CARI"
+            android:inputType="text"
             android:textSize="14dp" />
 
         <ImageView

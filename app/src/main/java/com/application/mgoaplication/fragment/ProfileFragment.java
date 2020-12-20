@@ -52,7 +52,7 @@ public class ProfileFragment extends Fragment {
     private String title[] = {
             "Profile",
 //            "Voucher Saya",
-            "Koin Saya",
+            "Poin Saya",
 //            "Favorit Saya",
 //            "Terakhir Dilihat",
             "Chat Admin via Whatsapp",
