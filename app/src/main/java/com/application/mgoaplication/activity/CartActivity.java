@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,7 +15,6 @@ import com.application.mgoaplication.R;
 import com.application.mgoaplication.adapter.CartAdapter;
 import com.application.mgoaplication.api.Service;
 import com.application.mgoaplication.model.ProductModel;
-import com.google.gson.GsonBuilder;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

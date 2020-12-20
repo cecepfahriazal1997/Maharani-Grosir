@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.application.mgoaplication.R;
 import com.application.mgoaplication.helper.GeneralHelper;
 import com.application.mgoaplication.model.CouponModel;
-import com.application.mgoaplication.model.CouponModel;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.application.mgoaplication.R;
-import com.application.mgoaplication.activity.CouponActivity;
 import com.application.mgoaplication.activity.DashboardActivity;
 import com.application.mgoaplication.activity.LoginActivity;
 import com.application.mgoaplication.activity.PrizeActivity;

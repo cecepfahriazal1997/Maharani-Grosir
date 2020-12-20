@@ -5,34 +5,20 @@ import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.application.mgoaplication.R;
 import com.application.mgoaplication.adapter.TabAdapter;
 import com.application.mgoaplication.api.Service;
 import com.application.mgoaplication.fragment.CategoryFragment;
-import com.application.mgoaplication.fragment.DefaultFragment;
 import com.application.mgoaplication.fragment.HomeFragment;
 import com.application.mgoaplication.fragment.ProfileFragment;
 import com.application.mgoaplication.fragment.TransactionFragment;
 import com.application.mgoaplication.helper.GeneralHelper;
 import com.google.android.material.tabs.TabLayout;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class DashboardActivity extends MasterActivity implements View.OnClickListener {
     private TabLayout tabLayout;

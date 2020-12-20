@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,7 +19,6 @@ import com.application.mgoaplication.api.Service;
 import com.application.mgoaplication.model.AnnouncementModel;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;

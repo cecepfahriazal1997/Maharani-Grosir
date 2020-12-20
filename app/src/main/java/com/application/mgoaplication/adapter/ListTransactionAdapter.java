@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.application.mgoaplication.R;
 import com.application.mgoaplication.helper.GeneralHelper;
-import com.application.mgoaplication.model.TransactionModel;
 import com.application.mgoaplication.model.ProductModel;
 import com.application.mgoaplication.model.TransactionModel;
 

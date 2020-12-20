@@ -1,6 +1,7 @@
 package com.application.mgoaplication.activity;
 
 import android.os.Bundle;
+
 import com.application.mgoaplication.R;
 
 public class DefaultActivity extends MasterActivity {

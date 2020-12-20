@@ -14,9 +14,6 @@ import com.application.mgoaplication.R;
 import com.application.mgoaplication.adapter.CheckoutAdapter;
 import com.application.mgoaplication.api.Service;
 import com.application.mgoaplication.model.ProductModel;
-import com.esafirm.imagepicker.features.ImagePicker;
-import com.esafirm.imagepicker.model.Image;
-import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

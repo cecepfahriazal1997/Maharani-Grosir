@@ -6,7 +6,6 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.application.mgoaplication.R;

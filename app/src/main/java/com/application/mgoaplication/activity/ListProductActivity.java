@@ -10,10 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.application.mgoaplication.R;
-import com.application.mgoaplication.adapter.ListCategoryAdapter;
 import com.application.mgoaplication.adapter.ProductAdapter;
 import com.application.mgoaplication.api.Service;
-import com.application.mgoaplication.model.CategoryModel;
 import com.application.mgoaplication.model.ProductModel;
 
 import org.json.JSONArray;

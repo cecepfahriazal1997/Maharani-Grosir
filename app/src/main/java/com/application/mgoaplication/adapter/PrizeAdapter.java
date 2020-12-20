@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.application.mgoaplication.R;
 import com.application.mgoaplication.helper.GeneralHelper;
 import com.application.mgoaplication.model.PrizeModel;
-import com.application.mgoaplication.model.PrizeModel;
 
 import java.util.ArrayList;
 import java.util.List;

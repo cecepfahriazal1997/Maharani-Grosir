@@ -19,7 +19,6 @@ import com.application.mgoaplication.R;
 import com.application.mgoaplication.api.Service;
 import com.application.mgoaplication.helper.GeneralHelper;
 import com.application.mgoaplication.model.ProductModel;
-import com.application.mgoaplication.model.ProductModel;
 import com.google.android.flexbox.FlexboxLayout;
 
 import org.json.JSONArray;
