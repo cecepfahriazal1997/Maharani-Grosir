@@ -1,10 +1,11 @@
 package com.application.mgoaplication.activity;
 
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -37,6 +38,7 @@ public class AllProductActivity extends MasterActivity implements View.OnClickLi
         findView();
         initViewPopUpCart();
         init();
+        initSearchProduct();
         fetchData();
         helper.showPopUpCart(parent, popupCart, amount, price);
     }
@@ -55,22 +57,35 @@ public class AllProductActivity extends MasterActivity implements View.OnClickLi
         if (type.equals("post"))
             tmpParam    = getIntent().getStringExtra("param");
         title.setText(getIntent().getStringExtra("title"));
-        keyword.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (productAdapter != null && list != null && list.size() > 0) {
-                    productAdapter.getFilter().filter(s);
-                }
-            }
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
         back.setOnClickListener(this::onClick);
         popupCart.setOnClickListener(this::onClick);
+    }
+
+    private void initSearchProduct() {
+        keyword.setImeActionLabel("CARI", EditorInfo.IME_ACTION_SEARCH);
+        keyword.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                switch (actionId) {
+                    case EditorInfo.IME_ACTION_SEARCH:
+                        try {
+                            String tmpKey = keyword.getText().toString();
+                            if (type.equals("post")) {
+                                JSONObject data = new JSONObject();
+                                data.put("keywords", tmpKey);
+                                tmpParam = data.toString();
+                            } else {
+                                url += "&keywords=" + tmpKey;
+                            }
+                            fetchData();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     private void fetchData() {
