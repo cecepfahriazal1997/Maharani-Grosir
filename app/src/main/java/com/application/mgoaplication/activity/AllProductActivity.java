@@ -25,8 +25,9 @@ public class AllProductActivity extends MasterActivity implements View.OnClickLi
     private List<ProductModel> list = new ArrayList<>();
     private ProductAdapter productAdapter;
     private RecyclerView recyclerView;
-    private String url;
+    private String url, type;
     private boolean onPause = false;
+    private String tmpParam;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +50,10 @@ public class AllProductActivity extends MasterActivity implements View.OnClickLi
 
     public void init() {
         helper.saveSession("showBadge", "false");
-        url = getIntent().getStringExtra("url");
+        url         = getIntent().getStringExtra("url");
+        type        = getIntent().getStringExtra("type");
+        if (type.equals("post"))
+            tmpParam    = getIntent().getStringExtra("param");
         title.setText(getIntent().getStringExtra("title"));
         keyword.addTextChangedListener(new TextWatcher() {
             @Override
@@ -72,7 +76,18 @@ public class AllProductActivity extends MasterActivity implements View.OnClickLi
     private void fetchData() {
         try {
             list.clear();
-            service.apiService(url, null, null, false, "array", new Service.hashMapListener() {
+            if (type.equals("post")) {
+                param.clear();
+                JSONObject data = new JSONObject(tmpParam.trim());
+                JSONArray keys = data.names();
+                for (int i = 0; i < keys.length(); ++i) {
+                    String key = keys.getString(i); // Here's your key
+                    String value = data.getString(key); // Here's your value
+
+                    param.put(key, value);
+                }
+            }
+            service.apiService(url, param, null, false, "array", new Service.hashMapListener() {
                 @Override
                 public String getHashMap(Map<String, String> hashMap) {
                     try {

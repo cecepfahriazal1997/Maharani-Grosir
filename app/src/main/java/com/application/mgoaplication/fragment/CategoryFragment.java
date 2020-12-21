@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.application.mgoaplication.R;
+import com.application.mgoaplication.activity.AllProductActivity;
 import com.application.mgoaplication.activity.DashboardActivity;
-import com.application.mgoaplication.activity.ListProductActivity;
 import com.application.mgoaplication.activity.SubCategoryActivity;
 import com.application.mgoaplication.adapter.ListCategoryAdapter;
 import com.application.mgoaplication.api.Service;
@@ -111,10 +111,10 @@ public class CategoryFragment extends Fragment {
                                                         param.put("title", list.get(position).getTitle());
                                                         parent.generalHelper.startIntent(SubCategoryActivity.class, false, param);
                                                     } else {
-                                                        param.put("type", "category");
-                                                        param.put("groupId", list.get(position).getId());
-                                                        param.put("title", list.get(position).getTitle());
-                                                        parent.generalHelper.startIntent(ListProductActivity.class, false, param);
+                                                        param.put("type", "get");
+                                                        param.put("title", "Produk Kategori " + list.get(position).getTitle());
+                                                        param.put("url", parent.apiService.listProductByCategory + list.get(position).getId());
+                                                        parent.generalHelper.startIntent(AllProductActivity.class, false, param);
                                                     }
                                                 }
                                             });

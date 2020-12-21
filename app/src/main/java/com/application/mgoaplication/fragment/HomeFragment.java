@@ -24,9 +24,7 @@ import com.application.mgoaplication.activity.AllProductActivity;
 import com.application.mgoaplication.activity.AnnouncementActivity;
 import com.application.mgoaplication.activity.CartActivity;
 import com.application.mgoaplication.activity.DashboardActivity;
-import com.application.mgoaplication.activity.ListProductActivity;
 import com.application.mgoaplication.activity.ScanActivity;
-import com.application.mgoaplication.activity.SingleProductActivity;
 import com.application.mgoaplication.activity.SubCategoryActivity;
 import com.application.mgoaplication.adapter.BannerAdapter;
 import com.application.mgoaplication.adapter.GridCategoryAdapter;
@@ -35,7 +33,6 @@ import com.application.mgoaplication.api.Service;
 import com.application.mgoaplication.model.BannerModel;
 import com.application.mgoaplication.model.CategoryModel;
 import com.application.mgoaplication.model.ProductModel;
-import com.google.gson.GsonBuilder;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
@@ -166,61 +163,24 @@ public class HomeFragment extends Fragment {
                 return false;
             }
         });
-//        search.setOnKeyListener(new View.OnKeyListener() {
-//            @Override
-//            public boolean onKey(View v, int keyCode, KeyEvent event) {
-//                // If the event is a key-down event on the "enter" button
-//                if ((event.getAction() == KeyEvent.ACTION_DOWN) &&
-//                        (keyCode == KeyEvent.KEYCODE_ENTER)) {
-//                    searchProduct(parent.apiService.searchProduct, search.getText().toString());
-//                    return true;
-//                }
-//                return false;
-//            }
-//        });
     }
 
     private void searchProduct(String url, String keyword) {
-        param.clear();
-        if (url == parent.apiService.scanBarcode)
-            param.put("barcode", keyword);
-        else
-            param.put("keywords", keyword);
-
-        parent.apiService.apiService(url, param, null,
-                true, "array", new Service.hashMapListener() {
-                    @Override
-                    public String getHashMap(Map<String, String> hashMap) {
-                        try {
-                            if (hashMap.get("status").equals("true")) {
-                                JSONObject detail;
-                                if (url == parent.apiService.scanBarcode) {
-                                    detail              = new JSONArray(hashMap.get("response").trim()).getJSONObject(0);
-                                } else {
-                                    JSONArray data      = new JSONArray(hashMap.get("response").trim()).getJSONArray(0);
-                                    detail              = data.getJSONObject(0);
-                                }
-                                ProductModel item = new ProductModel();
-                                item.setId(detail.getString("id"));
-                                item.setName(detail.getString("nama_barang"));
-                                item.setDescription(detail.getString("deskripsi"));
-                                item.setImage(detail.getString("gambar1"));
-                                item.setListPrice(detail.getJSONArray("harga"));
-
-                                param.clear();
-                                param.put("title", "Hasil Pencarian Product");
-                                param.put("data", new GsonBuilder().create().toJson(item));
-                                param.put("listPrice", detail.getJSONArray("harga").toString());
-                                parent.generalHelper.startIntent(SingleProductActivity.class, false, param);
-                            } else {
-                                parent.generalHelper.showToast(hashMap.get("message"), 0);
-                            }
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        return null;
-                    }
-                });
+        try {
+            param.clear();
+            JSONObject data = new JSONObject();
+            if (url == parent.apiService.scanBarcode)
+                data.put("barcode", keyword);
+            else
+                data.put("keywords", keyword);
+            param.put("param", data.toString());
+            param.put("title", "Hasil Pencarian Produk");
+            param.put("type", "post");
+            param.put("url", url);
+            parent.generalHelper.startIntent(AllProductActivity.class, false, param);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void setProduct(JSONArray data, int type) throws JSONException {
@@ -283,10 +243,10 @@ public class HomeFragment extends Fragment {
                                                         param.put("title", listCategory.get(position).getTitle());
                                                         parent.generalHelper.startIntent(SubCategoryActivity.class, false, param);
                                                     } else {
-                                                        param.put("type", "category");
-                                                        param.put("groupId", listCategory.get(position).getId());
-                                                        param.put("title", listCategory.get(position).getTitle());
-                                                        parent.generalHelper.startIntent(ListProductActivity.class, false, param);
+                                                        param.put("type", "get");
+                                                        param.put("title", "Produk Kategori " + listCategory.get(position).getTitle());
+                                                        param.put("url", parent.apiService.listProductByCategory + listCategory.get(position).getId());
+                                                        parent.generalHelper.startIntent(AllProductActivity.class, false, param);
                                                     }
                                                 }
                                             });
@@ -385,18 +345,21 @@ public class HomeFragment extends Fragment {
                     break;
                 case R.id.see_all_best:
                     param.clear();
+                    param.put("type", "get");
                     param.put("title", "Daftar Produk Terlaris");
                     param.put("url", parent.apiService.popularProduct);
                     parent.generalHelper.startIntent(AllProductActivity.class, false, param);
                     break;
                 case R.id.see_all_new:
                     param.clear();
+                    param.put("type", "get");
                     param.put("title", "Daftar Produk Terbaru");
                     param.put("url", parent.apiService.newProduct);
                     parent.generalHelper.startIntent(AllProductActivity.class, false, param);
                     break;
                 case R.id.see_all_recommend:
                     param.clear();
+                    param.put("type", "get");
                     param.put("title", "Daftar Produk Rekomendasi");
                     param.put("url", parent.apiService.recommendProduct);
                     parent.generalHelper.startIntent(AllProductActivity.class, false, param);

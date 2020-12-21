@@ -49,8 +49,10 @@ public class ListCategoryAdapter extends RecyclerView.Adapter<ListCategoryAdapte
         if (item.getImage() != null) {
             helper.fetchImage(holder.image.getRootView(), item.getImage(), holder.image);
             holder.image.setVisibility(View.VISIBLE);
+            holder.title.setPadding(0, 0, 0, 0);
         } else {
             holder.image.setVisibility(View.GONE);
+            holder.title.setPadding(0, 20, 0, 20);
         }
     }
 

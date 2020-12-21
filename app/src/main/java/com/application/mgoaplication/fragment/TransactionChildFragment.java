@@ -134,7 +134,7 @@ public class TransactionChildFragment extends Fragment {
                                             JSONObject detail = listItem.getJSONObject(i);
                                             JSONArray listItemDetail = detail.getJSONArray("dataKeranjang");
                                             TransactionModel item = new TransactionModel();
-                                            item.setOrderNumber(parent.generalHelper.md5(detail.getString("id_pesanan")));
+                                            item.setOrderNumber(detail.getString("id_pesanan"));
                                             item.setId(detail.getString("id_pesanan"));
                                             item.setAmount(parent.generalHelper.formatCurrency(detail.getString("total")));
                                             item.setTotal(String.valueOf(listItemDetail.length()));

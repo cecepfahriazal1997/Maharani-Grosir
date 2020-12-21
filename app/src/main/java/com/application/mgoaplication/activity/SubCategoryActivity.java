@@ -45,6 +45,7 @@ public class SubCategoryActivity extends MasterActivity implements View.OnClickL
     }
 
     private void init() {
+        keyword.setHint("Cari sub kategori disini ...");
         title.setText("Sub Kategori " + getIntent().getStringExtra("title"));
         back.setOnClickListener(this::onClick);
         keyword.addTextChangedListener(new TextWatcher() {
@@ -89,10 +90,10 @@ public class SubCategoryActivity extends MasterActivity implements View.OnClickL
                                                 @Override
                                                 public void onClickListener(int position) {
                                                     param.clear();
-                                                    param.put("type", "sub_category");
-                                                    param.put("groupId", list.get(position).getId());
-                                                    param.put("title", list.get(position).getTitle());
-                                                    helper.startIntent(ListProductActivity.class, false, param);
+                                                    param.put("type", "get");
+                                                    param.put("title", "Produk Subkategori " + list.get(position).getTitle());
+                                                    param.put("url", service.listProductBySubCategory + list.get(position).getId());
+                                                    helper.startIntent(AllProductActivity.class, false, param);
                                                 }
                                             });
                                     recyclerView.setLayoutManager(linearLayoutManager);
