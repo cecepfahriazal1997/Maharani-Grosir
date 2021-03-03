@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import com.application.mgoaplication.helper.GeneralHelper;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.async.http.AsyncHttpRequest;
+import com.koushikdutta.async.http.AsyncSSLSocketMiddleware;
 import com.koushikdutta.async.http.body.Part;
 import com.koushikdutta.ion.Ion;
 import com.koushikdutta.ion.Response;
@@ -16,6 +17,8 @@ import com.koushikdutta.ion.builder.Builders;
 
 import org.json.JSONObject;
 
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 import java.security.cert.X509Certificate;
 import java.util.Collections;
@@ -23,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
@@ -83,7 +87,7 @@ public class Service {
     private void configApiService() {
         Ion.getDefault(activity).getConscryptMiddleware().enable(false);
         Ion.getDefault(activity).configure().setLogging("LOG GET API", Log.DEBUG);
-        Ion.getDefault(activity).getHttpClient().getSSLSocketMiddleware().setTrustManagers(new TrustManager[] {new X509TrustManager() {
+        TrustManager[] wrappedTrustManagers = new TrustManager[] {new X509TrustManager() {
             @Override
             public void checkClientTrusted(final X509Certificate[] chain, final String authType) throws CertificateException {}
 
@@ -94,7 +98,23 @@ public class Service {
             public X509Certificate[] getAcceptedIssuers() {
                 return new X509Certificate[0];
             }
-        }});
+        }};
+
+        SSLContext sslContext = null;
+        try {
+            sslContext = SSLContext.getInstance("TLS");
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        try {
+            sslContext.init(null, wrappedTrustManagers, null);
+        } catch (KeyManagementException e) {
+            e.printStackTrace();
+        }
+
+        AsyncSSLSocketMiddleware sslMiddleWare = Ion.getDefault(activity.getApplicationContext()).getHttpClient().getSSLSocketMiddleware();
+        sslMiddleWare.setTrustManagers(wrappedTrustManagers);
+        sslMiddleWare.setSSLContext(sslContext);
     }
 
     // Fungsi ini digunakan untuk mengambil data hashmap dari reponse API
