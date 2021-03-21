@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/futura_medium"
-        android:textColor="@color/gray"
+        android:textColor="@color/darkGray"
         android:gravity="center"
         android:textSize="16dp"
         android:text="You haven't made an ad at this time."

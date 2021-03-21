@@ -92,7 +92,7 @@ public class SubCategoryActivity extends MasterActivity implements View.OnClickL
                                                     param.clear();
                                                     param.put("type", "get");
                                                     param.put("title", "Produk Subkategori " + list.get(position).getTitle());
-                                                    param.put("url", service.listProductBySubCategory + list.get(position).getId());
+                                                    param.put("url", service.listProductBySubCategory + "id_subkategori=" + list.get(position).getId() + "&");
                                                     helper.startIntent(AllProductActivity.class, false, param);
                                                 }
                                             });

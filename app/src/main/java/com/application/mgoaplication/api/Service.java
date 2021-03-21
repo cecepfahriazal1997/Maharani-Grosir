@@ -45,16 +45,16 @@ public class Service {
     public String resendOTP = baseUrl + "sendOTP";
     public String login = baseUrl + "login";
     public String logout = baseUrl + "logout";
-    public String newProduct = baseUrl + "newestProduct?page=1";
-    public String popularProduct = baseUrl + "popularProduct?page=1";
-    public String recommendProduct = baseUrl + "recommendationProduct?page=1&id_member=";
+    public String newProduct = baseUrl + "newestProduct?";
+    public String popularProduct = baseUrl + "popularProduct?";
+    public String recommendProduct = baseUrl + "recommendationProduct?";
     public String searchProduct = baseUrl + "search";
     public String scanBarcode = baseUrl + "scanBarcode";
     public String savePIN = baseUrl + "updatePin";
     public String categoryProduct = baseUrl + "getKategori";
     public String subCategoryProduct = baseUrl + "getSubkategori?idKategori=";
-    public String listProductByCategory = baseUrl + "productByCategory?page=1&id_kategori=";
-    public String listProductBySubCategory = baseUrl + "productBySubcategory?page=1&id_subkategori=";
+    public String listProductByCategory = baseUrl + "productByCategory?";
+    public String listProductBySubCategory = baseUrl + "productBySubcategory?";
     public String dashboard = baseUrl + "dataHome?id_member=";
     public String addToCart = baseUrl + "addtocart";
     public String listCart = baseUrl + "listKeranjang?id_member=";
@@ -201,7 +201,6 @@ public class Service {
                                 Map<String, String> hash = new HashMap<String, String>();
                                 hash.clear();
                                 if (e == null) {
-                                    Log.e("result", result.getResult());
                                     if (result.getHeaders().code() == 200) {
                                         JSONObject results  = new JSONObject(result.getResult());
                                         String response     = "";

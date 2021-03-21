@@ -361,7 +361,8 @@ public class HomeFragment extends Fragment {
                     param.clear();
                     param.put("type", "get");
                     param.put("title", "Daftar Produk Rekomendasi");
-                    param.put("url", parent.apiService.recommendProduct);
+                    param.put("url", parent.apiService.recommendProduct
+                            + "id_member=" + parent.generalHelper.getSession("id") + "&");
                     parent.generalHelper.startIntent(AllProductActivity.class, false, param);
                     break;
             }

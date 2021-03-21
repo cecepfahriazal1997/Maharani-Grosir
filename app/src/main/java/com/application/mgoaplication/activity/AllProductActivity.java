@@ -5,9 +5,11 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.application.mgoaplication.R;
 import com.application.mgoaplication.adapter.ProductAdapter;
@@ -21,14 +23,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import mehdi.sakout.fancybuttons.FancyButton;
+
 public class AllProductActivity extends MasterActivity implements View.OnClickListener {
     private EditText keyword;
     private List<ProductModel> list = new ArrayList<>();
     private ProductAdapter productAdapter;
+    private FancyButton loadMore;
     private RecyclerView recyclerView;
     private String url, type;
     private boolean onPause = false;
     private String tmpParam;
+    private int page = 1;
+    private SwipeRefreshLayout refreshLayout;
+    private FrameLayout emptyState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +47,19 @@ public class AllProductActivity extends MasterActivity implements View.OnClickLi
         initViewPopUpCart();
         init();
         initSearchProduct();
-        fetchData();
+
+        refreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                fetchData(true, null);
+            }
+        });
+        refreshLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                fetchData(true, null);
+            }
+        });
         helper.showPopUpCart(parent, popupCart, amount, price);
     }
 
@@ -48,6 +68,9 @@ public class AllProductActivity extends MasterActivity implements View.OnClickLi
         back            = findViewById(R.id.back);
         keyword         = findViewById(R.id.keyword);
         recyclerView    = findViewById(R.id.list);
+        loadMore        = findViewById(R.id.loadMore);
+        refreshLayout   = findViewById(R.id.swipe_refresh_layout);
+        emptyState      = findViewById(R.id.emptyState);
     }
 
     public void init() {
@@ -59,6 +82,7 @@ public class AllProductActivity extends MasterActivity implements View.OnClickLi
         title.setText(getIntent().getStringExtra("title"));
         back.setOnClickListener(this::onClick);
         popupCart.setOnClickListener(this::onClick);
+        loadMore.setOnClickListener(this::onClick);
     }
 
     private void initSearchProduct() {
@@ -74,10 +98,8 @@ public class AllProductActivity extends MasterActivity implements View.OnClickLi
                                 JSONObject data = new JSONObject();
                                 data.put("keywords", tmpKey);
                                 tmpParam = data.toString();
-                            } else {
-                                url += "&keywords=" + tmpKey;
                             }
-                            fetchData();
+                            fetchData(true, tmpKey);
                         } catch (Exception e) {
                             e.printStackTrace();
                         }
@@ -88,9 +110,15 @@ public class AllProductActivity extends MasterActivity implements View.OnClickLi
         });
     }
 
-    private void fetchData() {
+    private void fetchData(boolean clearData, String keyword) {
         try {
-            list.clear();
+            // if clear data or no load more
+            if (clearData) {
+                page    = 1;
+                list.clear();
+            } else {
+                page++;
+            }
             if (type.equals("post")) {
                 param.clear();
                 JSONObject data = new JSONObject(tmpParam.trim());
@@ -102,22 +130,46 @@ public class AllProductActivity extends MasterActivity implements View.OnClickLi
                     param.put(key, value);
                 }
             }
-            service.apiService(url, param, null, false, "array", new Service.hashMapListener() {
+            String tmpUrl = "";
+            tmpUrl = url + "page=" + page;
+            if (keyword != null && !keyword.isEmpty())
+                tmpUrl += "&keywords=" + keyword;
+            service.apiService(tmpUrl, param, null, false, "array", new Service.hashMapListener() {
                 @Override
                 public String getHashMap(Map<String, String> hashMap) {
+                    refreshLayout.setRefreshing(false);
+                    helper.showEmptyState(emptyState, false, R.drawable.empty, null, null);
                     try {
                         if (hashMap.get("status").equals("true")) {
-                            JSONArray data = new JSONArray(hashMap.get("response")).getJSONArray(0);
-                            for (int i = 0; i < data.length(); i++) {
-                                ProductModel item = new ProductModel();
-                                JSONObject detail = data.getJSONObject(i);
+                            JSONArray response  = new JSONArray(hashMap.get("response"));
+                            JSONArray data      = null;
+//                            init data
+                            if (!response.isNull(0)) {
+                                data = response.getJSONArray(0);
+                                if (data.length() > 0) {
+                                    for (int i = 0; i < data.length(); i++) {
+                                        ProductModel item = new ProductModel();
+                                        JSONObject detail = data.getJSONObject(i);
 
-                                item.setId(detail.getString("id"));
-                                item.setName(detail.getString("nama_barang"));
-                                item.setDescription(detail.getString("deskripsi"));
-                                item.setImage(detail.getString("gambar1"));
-                                item.setListPrice(detail.getJSONArray("harga"));
-                                list.add(item);
+                                        item.setId(detail.getString("id"));
+                                        item.setName(detail.getString("nama_barang"));
+                                        item.setDescription(detail.getString("deskripsi"));
+                                        item.setImage(detail.getString("gambar1"));
+                                        item.setListPrice(detail.getJSONArray("harga"));
+                                        list.add(item);
+                                    }
+                                } else {
+                                    helper.showEmptyState(emptyState, true, R.drawable.empty, "Oops!", "Barang yang kamu cari tidak ditemukan.");
+                                }
+                            } else {
+                                helper.showEmptyState(emptyState, true, R.drawable.empty, "Oops!", "Barang yang kamu cari tidak ditemukan.");
+                            }
+//                            init pagination
+                            JSONObject pagination = new JSONArray(hashMap.get("response")).getJSONObject(1);
+                            if (pagination.getBoolean("next_page")) {
+                                loadMore.setVisibility(View.VISIBLE);
+                            } else {
+                                loadMore.setVisibility(View.GONE);
                             }
                         } else {
                             helper.showToast(hashMap.get("message"), 0);
@@ -142,6 +194,9 @@ public class AllProductActivity extends MasterActivity implements View.OnClickLi
                 break;
             case R.id.popupCart:
                 helper.startIntent(CartActivity.class, false, null);
+                break;
+            case R.id.loadMore:
+                fetchData(false, null);
                 break;
         }
     }

@@ -113,7 +113,7 @@ public class CategoryFragment extends Fragment {
                                                     } else {
                                                         param.put("type", "get");
                                                         param.put("title", "Produk Kategori " + list.get(position).getTitle());
-                                                        param.put("url", parent.apiService.listProductByCategory + list.get(position).getId());
+                                                        param.put("url", parent.apiService.listProductByCategory + "id_kategori=" +  list.get(position).getId() + "&");
                                                         parent.generalHelper.startIntent(AllProductActivity.class, false, param);
                                                     }
                                                 }

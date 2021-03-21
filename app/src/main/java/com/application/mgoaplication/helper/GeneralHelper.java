@@ -28,7 +28,6 @@ import android.view.inputmethod.InputMethodManager;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -247,7 +246,7 @@ public class GeneralHelper {
         view.setText(content);
     }
 
-    public void showEmptyState(FrameLayout parent, boolean show, int image,
+    public void showEmptyState(ViewGroup parent, boolean show, int image,
                                String txtTitle, String txtMessage) {
         View child          = inflateView(R.layout.empty_state);
         ImageView icon      = (ImageView) child.findViewById(R.id.icon);
